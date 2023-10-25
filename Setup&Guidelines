@@ -1,0 +1,6 @@
+To use MRL, you will need to:
+
+Create a Universe class for each universe that you want to learn from. This class should implement a "step()" method that returns the reward and next state for a given state and action.
+Create an MRLAgent class and initialize it with the number of universes that you want to learn from.
+Train the MRL agent by calling the "act()", "step()", and "learn()" methods in a loop.
+Once the agent is trained, you can evaluate it by calling the "evaluate()" method.
