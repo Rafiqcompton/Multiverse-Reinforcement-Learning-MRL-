@@ -1,0 +1,50 @@
+import numpy as np
+import random
+
+class MRLAgent:
+    def __init__(self, num_universes):
+        self.universes = []
+        for i in range(num_universes):
+            self.universes.append(Universe())
+
+        self.policy = {}
+
+    def act(self, state):
+        action = np.random.choice(np.arange(len(self.policy[state])))
+        return action
+
+    def learn(self, state, action, reward, next_state):
+        self.policy[state][action] += reward
+
+        # Update the policy in all universes
+        for universe in self.universes:
+            universe.policy[state][action] += reward
+
+class Universe:
+    def __init__(self):
+        self.state = np.random.uniform(0, 1)
+        self.policy = {}
+
+    def step(self, action):
+        reward = np.random.uniform(-1, 1)
+        next_state = np.random.uniform(0, 1)
+
+        return reward, next_state
+
+# Train the MRL agent
+agent = MRLAgent(num_universes=100)
+
+for episode in range(1000):
+    state = np.random.uniform(0, 1)
+
+    # Take an action
+    action = agent.act(state)
+
+    # Step the universe and get the reward
+    reward, next_state = agent.universes[0].step(action)
+
+    # Learn from the experience
+    agent.learn(state, action, reward, next_state)
+
+# Evaluate the trained MRL agent
+# ...
