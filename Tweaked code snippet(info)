@@ -1,0 +1,5 @@
+The tweaked MRL algorithm can now:
+
+Learn more robust and generalizable models by exploring multiple universes simultaneously.
+Avoid overfitting to a single universe by forgetting old universes and exploring new ones.
+Learn more complex models that can generalize to a wider variety of environments by using a hierarchical approach.
